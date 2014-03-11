@@ -4,3 +4,4 @@
 	$vk->logout();
 	
 	header ("Location: /");
+?>

@@ -13,7 +13,7 @@
 <body>
 
 <?php if ($vk_auth !== false): ?>
-	Привет, <?=$vk_auth?>! <br /><a href="/logout.php">logout</a>
+	Привет, <?=$vk_mid?>! <br /><a href="/logout.php">logout</a>
 <?php else: ?>
 <div style="text-align:center"><?=$vk->render_login_form();?></div>
 <?php endif ?>

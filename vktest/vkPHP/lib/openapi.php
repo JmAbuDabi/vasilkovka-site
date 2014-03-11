@@ -3,21 +3,31 @@
 define ('VK_APP_ID', 'vk_app_4237766');
 define ('VK_APP_PASSWORD', 'P7hq0mCnObKj27inkcaf');
 
-class Auth_Vkontakte {
+class Auth_Vkontakte
+{
 	
 	/**
 	* Проверяет, залогинен пользователь. Если да - возвращает его ID ВКонтакте, в противном случае - false.
 	*/
-	public function is_auth() {
+	protected $mid;//Номер Пользователя
+	public function get_mid()
+	{
+		return $this->mid;
+	}
+	public $wallMessage;
+	public function is_auth()
+	{
 		if (!isset($_COOKIE[VK_APP_ID]))
 			return false;
 			
 		$vk_cookie = $_COOKIE[VK_APP_ID];
 		
-		if (!empty($vk_cookie)) {
+		if (!empty($vk_cookie))
+		{
 			$cookie_data = array();
 			
-			foreach (explode('&', $vk_cookie) as $item) {
+			foreach (explode('&', $vk_cookie) as $item)
+			{
 				$item_data = explode('=', $item);
 				$cookie_data[$item_data[0]] = $item_data[1];
 			}
@@ -25,9 +35,11 @@ class Auth_Vkontakte {
 			// Проверяем sig
 			$string = sprintf("expire=%smid=%ssecret=%ssid=%s%s", $cookie_data['expire'], $cookie_data['mid'], $cookie_data['secret'], $cookie_data['sid'], VK_APP_PASSWORD);
 			
-			if (md5($string) == $cookie_data['sig']) {
+			if (md5($string) == $cookie_data['sig'])
+			{
 				// sig не подделан - возвращаем ID пользователя ВКонтакте.
-				return $cookie_data['mid'];
+				$this->mid = $cookie_data['mid'];				
+				return true;
 			}
 		}
 		
@@ -37,10 +49,12 @@ class Auth_Vkontakte {
 	/**
 	* Производит разлогинивание 
 	*/
-	public function logout() {
+	public function logout()
+	{
 		
 		// Заменяем куку от ВКонтакте на пустую
-		if (setcookie(VK_APP_ID, '', 0, "/", '.'.$_SERVER['HTTP_HOST'])) {
+		if (setcookie(VK_APP_ID, '', 0, "/", '.'.$_SERVER['HTTP_HOST']))
+		{
 			return true;
 		}
 		
@@ -50,7 +64,9 @@ class Auth_Vkontakte {
 	/**
 	* Возвращает HTML со всеми необходимыми скриптами
 	*/
-	public function render_login_form() {
+	public function render_login_form()
+	{
 		return file_get_contents("lib/login_form.html");
 	}
 }
+?>
