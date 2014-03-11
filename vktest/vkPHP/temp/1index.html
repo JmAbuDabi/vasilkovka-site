@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1251" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Open API sample page</title>
+    <base href="//vk.com/" target="_blank" />
+    <link rel="stylesheet" href="//vk.com/css/rustyle.css" type="text/css" />
+    <link rel="stylesheet" href="//vk.com/css/wiki.css" type="text/css" />
+    <!--[if lte IE 6]><style type="text/css" media="screen">/* <![CDATA[ */ @import url(//vk.com/css/ie.css); /* ]]> */</style><![endif]-->
+    <!--[if IE 7]><style type="text/css" media="screen">/* <![CDATA[ */ @import url(//vk.com/css/ie7.css); /* ]]> */</style><![endif]-->
+    <!--[if gte IE 8]><style type="text/css" media="screen">/* <![CDATA[ */ @import url(//vk.com/css/ie8.css); /* ]]> */</style><![endif]-->
+    <!--script type="text/javascript">if (!window.vk) window.vk = {loginscheme: 'https', ip_h: 'ec2a09fc32d6f97bc0'};</script-->
+    <script src="//vk.com/js/common.js"></script>
+    <link rel="stylesheet" href="//durov.at/css/openapi_sample.css" type="text/css" />
+    <script src="/js/openapi_sample.js"></script>
+  </head>
+  <body>
+    <div id="vk_api_transport"></div>
+    <script type="text/javascript">
+      window.vkAsyncInit = function() {
+        VK.Auth.getLoginStatus(function(response) {
+          if (response.session) {
+            window.location = baseURL + '?op=main&page=auth';
+          } else {
+            VK.UI.button('vk_login');
+          }
+        });
+        VK.Observer.subscribe('auth.login', function(response) {
+          window.location = baseURL + '?op=main&page=auth';
+        });
+        VK.Observer.subscribe('auth.logout', function() {
+          console.log('logout');
+        });
+        VK.Observer.subscribe('auth.statusChange', function(response) {
+          console.log('statusChange');
+        });
+        VK.Observer.subscribe('auth.sessionChange', function(r) {
+          console.log('sessionChange');
+        });
+
+        VK.init({
+          apiId: 4237766,
+          nameTransportPath: '/xd_receiver.html'
+        });
+        VK.UI.button('vk_login');
+      };
+      setTimeout(function() {
+        var el = document.createElement('script');
+        el.type = 'text/javascript';
+        el.src = '//vk.com/js/api/openapi.js?3';
+        el.async = true;
+        document.getElementById('vk_api_transport').appendChild(el);
+      }, 0);
+    </script>
+    <div id="openapi_header">
+      <div id="openapi_title">Приклад інших сайтів<p style="margin:3px 0px 0px; font-size: 11px; color:#CDD9E4">Використання <span style="color:#FFF">Open API</span> ВКонтакті</p></div>
+      <div style="clear:both;"></div>
+    </div>
+    <div id="openapi_login_wrap">
+      <div style="margin: 5px 0pt 20px; font-weight: normal; text-align: justify;" class="dld">Дана сторінка демонструє приклад сайту, зробленого на платформі <b>ВКонтакті Open API</b>. Якщо Ви зареєстровані в соціальній мережі <a href="//vk.com">ВКонтакті</a>, то при натисканні на кнопку <b>Увійти ВКонтакті</b>, Ви будете автоматично авторизовані на даному сайті.</div>
+      <div id="vk_login" style="margin: 0 auto 20px auto;" onclick="doLogin();"></div>
+    </div>
+  </body>
+</html>
