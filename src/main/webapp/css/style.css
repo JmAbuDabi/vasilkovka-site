@@ -1,0 +1,59 @@
+body {
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-size: 80%;
+	margin: 0;
+	padding: 0;
+	background-color : #DDD;
+	
+}
+.tbl1 
+{ 
+background: url('http://localhost:8080/webclient/img/back.jpg'); 
+background-repeat: no-repeat; 
+background-color : #FFF;
+margin-top:0.5em;
+border: 1px solid #222;
+}
+#navcontainer { width: 100%; border-top: 1px solid #777;}
+
+#navcontainer ul
+{
+	margin-left: 0;	padding-left: 0;
+	list-style-type: none;
+	font-size: 85%;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#navcontainer a
+{	display: block;
+	width: 100%;
+	padding: 0.25em;
+	
+	border-bottom: 1px solid #777;
+	color: #333;text-decoration: none;
+}
+#navcontainer a:hover	{background-color: #117;color: #fff;}
+
+
+p,main {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 75%;
+	color: black;
+}
+
+h1,h2,h3 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	border-bottom: 1px solid #666;
+}
+
+
+
+a {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #119;
+}
+a:visited {
+	color: #007;
+}
+
