@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@Controller
-public class ContactController {
+@Controller("/")
+public class UserController {
 
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping("/index")
+	@RequestMapping("/")
 	public String listContacts(Map<String, Object> map) {
 
 		map.put("contact", new User());
@@ -27,10 +27,6 @@ public class ContactController {
 		return "contact";
 	}
 	
-	@RequestMapping("/")
-	public String home() {
-		return "redirect:/index";
-	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addContact(@ModelAttribute("contact") User user,
