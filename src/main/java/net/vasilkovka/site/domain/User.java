@@ -15,7 +15,7 @@ public class User {
 	@GeneratedValue
 	private Integer id;
 
-	@Column(name = "FIRSTNAME")
+    @Column(name = "FIRSTNAME")
 	private String firstname;
 
 	@Column(name = "LASTNAME")
@@ -30,46 +30,43 @@ public class User {
     public User() {
     }
 
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
     public Integer getId() {
-		return id;
-	}
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public String getFirstname() {
-		return firstname;
-	}
+    public String getLastname() {
+        return lastname;
+    }
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
 
-	public String getLastname() {
-		return lastname;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getTelephone() {
+        return telephone;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getTelephone() {
-		return telephone;
-	}
-
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
-
-	// Getters and setters
-	
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
 }
