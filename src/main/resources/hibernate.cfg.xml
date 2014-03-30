@@ -6,5 +6,6 @@
 <hibernate-configuration>
 	<session-factory>
 		<mapping class="net.vasilkovka.site.domain.User" />
+        <mapping class="net.vasilkovka.site.domain.VKMapper" />
 	</session-factory>
 </hibernate-configuration>

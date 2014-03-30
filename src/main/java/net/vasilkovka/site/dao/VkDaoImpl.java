@@ -3,6 +3,7 @@ package net.vasilkovka.site.dao;
 import net.vasilkovka.site.domain.VKMapper;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * Time: 10:39 PM
  *
  */
+@Repository
 public class VkDaoImpl implements VkDao{
 
     @Autowired
